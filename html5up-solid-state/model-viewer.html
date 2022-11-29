@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/model-viewer.css">
+    <title>Model viewer</title>
+  </head>
+  <body>
+    <main>
+      <nav id="topNav">
+        <a href="/index.html"><h1 class="logo">Test model viewer</h1></a>
+
+        <div class="menu" id="menu">
+          <p id="spatialTree-nav">Spatial Tree</p>
+          <p id="measure-nav">Measure</p>
+          <p id="clippingPlane-nav">Clipping Plane</p>
+          <div class="dropdown">
+            <button class="dropdownButton">Visibility</button>
+          </div>
+          <p id="explode-nav">Explode</p>
+        </div>
+        <div class="alwaysVisible" id="alwaysVisible">
+            <p id="openIfcInactive">
+              Open IFC
+            </p>
+            <p id="openifcfile" style="display: none; visibility: hidden;">Open an IFC file</p>
+            <input type="file" id="fileInput" name="file">
+      </nav>
+      
+      <section>
+        <div id="lateralMenu" class="lateralMenu" style="display: none;"><p id="spatialTree-lat">Spatial Tree</p><p id="measure-lat">Measure</p><p id="clippingPlane-lat">Clipping Plane</p><div class="dropdown"><button class="dropdownButton">Visibility <svg viewBox="0 0 24 24"><path d="M12 15a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L12 12.586l3.293-3.293a1 1 0 0 1 1.414 1.414l-4 4A1 1 0 0 1 12 15z"></path></svg></button><div class="dropdownContent"><p id="IFCCategories-lat">IFC Categories</p><p id="Grid-lat">Grid</p><p id="Wireframe-lat">Wireframe</p><p id="Hiddenline-lat">Hidden line</p><p id="Shaded-lat" class="activeView">Shaded</p></div></div><p id="explode-lat">Explode</p></div>
+        <aside id="sidePanel" style="display: block;">
+          <article id="tree">
+            <h3 class="treeTitle">SPATIAL TREE</h3>
+            <svg id="propClose" width="12" height="12">
+              <line x1="1" y1="1" x2="11" y2="11" style="stroke: rgb(0, 0, 0); stroke-width: 2"></line>
+              <line x1="11" y1="1" x2="1" y2="11" style="stroke: rgb(0, 0, 0); stroke-width: 2"></line>
+            </svg>
+            <ul id="spatialTree" class="treeTitle">
+              <li id="treeRoot"></li><li><span class="caret">Test model</span><ul class="nested"><li><span class="caret">Site</span><ul class="nested"><li><span class="caret">Building</span><ul class="nested"><li><span class="caret">-</span><ul class="nested"><li class="leaf-node">-</li><li class="leaf-node">-</li></ul></li></ul></li></ul></li></ul></li>
+            </ul>
+          </article>
+          <article id="properties">
+            <h3 id="propertiesTitle">Properties</h3>
+            <p id="propertiesSubtitle">Select an element to show properties</p>
+            <div id="propertiesMenu" style="visibility: visible;">
+              <h4 id="propertiesButton" class="active">Properties</h4>
+              <h4 id="materialButton" class="notActive">Material</h4>
+              <h4 id="psetsButton" class="notActive">Property Sets</h4>
+            </div>
+            <div id="itemProperties"></div>
+          </article>
+        </aside>
+        <div class="canvasContainer" id="canvasContainer">
+          <canvas id="threeCanvas" data-engine="three.js r135" width="1323" height="937" style="width: 1323px; height: 937px; touch-action: none;"></canvas>
+          <div class="commandDiv" id="commandDiv" style="left: 800px; opacity: 0;">
+            <p id="command">Click on any IFC element</p>
+          </div>
+        </div>
+        <div id="loadingDiv" style="display: none;">
+          <h4>PROCESSING...</h4>
+          <p>Please wait while we set things up for you</p>
+          <div id="backgroundBar">
+            <div id="bar"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
